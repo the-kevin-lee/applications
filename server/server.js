@@ -1,7 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const app = express();
-const port = 8000;
+
 const cors = require('cors');
 
 
@@ -52,6 +52,7 @@ app.get('/api/weather', async (req, res) => {
 
 console.log("NODE_ENV is set to:", process.env.NODE_ENV);
 
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
