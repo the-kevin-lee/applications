@@ -1,46 +1,29 @@
-import { useState} from "react";
-import './WeatherForm.css';
+import React, {useState} from 'react';
 
-const baseURL = 'http://localhost:5000';
+const WeatherForm = ({onCitySubmit}) => {
+    const [inputCity, setInputCity] = useState("");
 
-const WeatherForm = ({setLocation}) => {
-    const [city,setCity] = useState("");
-    // update the input as the user types
-    const handleNewInput = (e) => {
-        setCity(e.target.value);
-    }
-
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        try {
-            const response = await fetch(`${baseURL}/api/weather?location=${encodeURIComponent(city)}`, {
-                headers: {
-                    'Cache-Control': 'no-cache'
-                }
-            })
-            const data = await response.json();
-            console.log("Weather data:", data);
-        } catch (error) {
-            console.log("Error fetching data:", error)
-        } 
+        if (inputCity.trim()) {
+            onCitySubmit(inputCity); // lifting state up when form is submitted
+            setInputCity("") // resetting the field
+        }
     }
 
-    
-    return (
-        <form className="Weather-Form" onSubmit={handleSubmit}>
-            <input
-                className="Weather-Form-Search-Bar"
-                type="text"
-                value={city}
-                onChange={handleNewInput}
-                placeholder="Enter City"
-            />
-            <button className="Weather-Form-Button"type="submit">Get Weather Info</button>
 
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <input
+                type='text'
+                value={inputCity}
+                onChange={(e) => setInputCity(e.target.value)}
+                placeholder='Enter City'
+            />
+            <button type='submit'>Get Weather Info</button>
         </form>
     )
-
-
 }
 
 export default WeatherForm;
