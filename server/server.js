@@ -22,8 +22,8 @@ app.use(cors());
 
 // API routing 
 app.get('/api/weather', async (req, res) => {
-    console.log("Received request for /api/weather with city:", req.query.city);
-    const city = req.query.city;
+    console.log("Received request for /api/weather with city:", req.query.location);
+    const city = req.query.location;
     const APIkey = "vzkgb5IUigg9TrPsg6Tiu7j98yILxd30";
 
     const options = {

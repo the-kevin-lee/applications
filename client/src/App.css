@@ -3,10 +3,14 @@
 
 body {
   position: relative;
-  background-color: #242526;
+  
   font-family: 'Poppins', sans-serif;
-}
+  background-image: url('../public/earth.jpg');
 
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
 
 .App {

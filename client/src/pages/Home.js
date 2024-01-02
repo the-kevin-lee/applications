@@ -1,56 +1,58 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import Card from "./components/Card";
-import './Home.css';
+import "./Home.css";
 import Navbar from "./components/Navbar";
-
+import WeatherAlert from "./components/reusablecomponents/WeatherAlert";
 
 const Home = () => {
-    ////////////// LOCATION HANDLING vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-    // default location = New York
-    const [chosenLocation, setChosenLocation] = useState('New York');  
-    const [weatherData, setWeatherData] = useState(null);
+  ////////////// LOCATION HANDLING ////////////////////////////////////////////
+  // Default location = New York
+  const [chosenLocation, setChosenLocation] = useState("New York");
 
-
-    useEffect(() => {
-        const savedLocation = localStorage.getItem('userLocation');
-        if (savedLocation) {
-            setChosenLocation(savedLocation);
-        }
-    }, []);
-
-    // fetching and setting new weather data based on newCity
-    const handleCityChange = async (newCity) => {
-        updateLocation(newCity); // new localStorage location will be changed to new city
-        setWeatherData(newCity); // new Weather Data will passed to Cards below
+  // Check for a saved location in local storage on component mount
+  useEffect(() => {
+    const savedLocation = localStorage.getItem("userLocation");
+    console.log("Retrieved location from storage:", savedLocation);
+    if (savedLocation) {
+      setChosenLocation(savedLocation);
     }
+  }, []);
 
-    // once user entered a new location from form
-    const updateLocation = (newLocation) => {
-        setChosenLocation(newLocation);
-        localStorage.setItem('userLocation', newLocation);
-    }
-    /////////////////////////////////////////////////////////////////
+  // Handle city change from WeatherForm
+  const handleCityChange = (newCity) => {
+    updateLocation(newCity);
+  };
 
+  // Update location and save to local storage
+  const updateLocation = (newLocation) => {
+    setChosenLocation(newLocation);
+    localStorage.setItem("userLocation", newLocation);
+  };
 
-    return (
-        <>
+  return (
+    <>
+      <div className="main-content-home">
+        <Navbar onCitySubmit={handleCityChange} />
+        <section className="weather-alert">
+          <WeatherAlert chosenLocation={chosenLocation} />
+        </section>
+        <section>
+            <h1 className="cityname-display">{(chosenLocation).toUpperCase()}</h1>
+        </section>
+        <section className="weather-cards">
+          <Card id="1" type="temp" chosenLocation={chosenLocation} />
+          <Card id="2" type="precipitation" chosenLocation={chosenLocation} />
+          <Card id="3" type="winddata" chosenLocation={chosenLocation} />
+          <Card id="4" type="humidity" chosenLocation={chosenLocation} />
+          <Card id="5" type="clouddata" chosenLocation={chosenLocation} />
+          <Card id="6" type="weathercondition" chosenLocation={chosenLocation} />
+        
+        </section>
 
-            <Navbar onCitySubmit={handleCityChange}/>
-            <section className="weather-cards">
-                <Card id="1" weatherData={weatherData} chosenLocation={chosenLocation} />
-                <Card id="2" weatherData={weatherData} chosenLocation={chosenLocation} />
-                <Card id="3" wetaherData={weatherData} chosenLocation={chosenLocation} />
-            </section>
-            
-            
-            <h1>Welcome! </h1>
+        <br />
+      </div>
+    </>
+  );
+};
 
-
-        </>
-
-    )
-}
-
-
-export default Home
+export default Home;
