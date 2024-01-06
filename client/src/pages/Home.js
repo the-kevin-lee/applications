@@ -3,11 +3,11 @@ import Card from "./components/Card";
 import "./Home.css";
 import Navbar from "./components/Navbar";
 import WeatherAlert from "./components/reusablecomponents/WeatherAlert";
+import ImplementWeatherData from "./components/ImplementWeatherData";
 
 const Home = () => {
-  ////////////// LOCATION HANDLING ////////////////////////////////////////////
-  // Default location = New York
-  const [chosenLocation, setChosenLocation] = useState("New York");
+  
+  const [chosenLocation, setChosenLocation] = useState(null);
 
   // Check for a saved location in local storage on component mount
   useEffect(() => {
@@ -29,30 +29,31 @@ const Home = () => {
     localStorage.setItem("userLocation", newLocation);
   };
 
+  const weatherData = ImplementWeatherData(chosenLocation)
+
+
   return (
     <>
-      <div className="main-content-home">
-        <Navbar onCitySubmit={handleCityChange} />
-        <section className="weather-alert">
-          <WeatherAlert chosenLocation={chosenLocation} />
-        </section>
-        <section>
-            <h1 className="cityname-display">{(chosenLocation).toUpperCase()}</h1>
-        </section>
-        <section className="weather-cards">
-          <Card id="1" type="temp" chosenLocation={chosenLocation} />
-          <Card id="2" type="precipitation" chosenLocation={chosenLocation} />
-          <Card id="3" type="winddata" chosenLocation={chosenLocation} />
-          <Card id="4" type="humidity" chosenLocation={chosenLocation} />
-          <Card id="5" type="clouddata" chosenLocation={chosenLocation} />
-          <Card id="6" type="weathercondition" chosenLocation={chosenLocation} />
-        
-        </section>
-
-        <br />
-      </div>
+        <div className="main-content-home">
+            <Navbar onCitySubmit={handleCityChange} />
+            <WeatherAlert chosenLocation={chosenLocation} />
+            <h1 className="cityname-display">{chosenLocation}</h1>
+            <section className="weather-cards">
+                {/* Pass the fetched weatherData to each Card */}
+                <Card id="1" type="temp" weatherData={weatherData} />
+                <Card id="2" type="precipitation" weatherData={weatherData} />
+                <Card id="3" type="winddata" weatherData={weatherData} />
+                <Card id="4" type="humidity" weatherData={weatherData} />
+                <Card id="5" type="clouddata" weatherData={weatherData} />
+                <Card id="6" type="weathercondition" weatherData={weatherData} />
+            </section>
+            <hr className="divider"/>
+            <section className="future-forecast">
+                <h1>Future Forecast</h1>
+            </section>
+        </div>
     </>
-  );
+);
 };
 
 export default Home;

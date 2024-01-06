@@ -7,13 +7,6 @@ const cors = require('cors');
 
 app.use(cors());
 
-// CORS handling
-// app.use((req, res, next) => {
-//     res.header('Access-Control-Allow-Origin', 'http://localhost:3000/'); // Replace with your React app's origin
-//     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-//     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-//     next();
-// });
 
 
 
@@ -22,22 +15,35 @@ app.use(cors());
 
 // API routing 
 app.get('/api/weather', async (req, res) => {
-    console.log("Received request for /api/weather with city:", req.query.location);
-    const city = req.query.location;
+    const location = req.query.location;
+    console.log("Requested location parameter:", location);
+    
+
+
+    if (!location || location.trim() === '') {
+        return res.status(400).json({error: 'Location parameter is missing.'})
+    }
+
+    const encodedLocation = encodeURIComponent(location);
     const APIkey = "vzkgb5IUigg9TrPsg6Tiu7j98yILxd30";
+
+    const url = `https://api.tomorrow.io/v4/weather/realtime?location=${encodeURIComponent(encodedLocation)}&apikey=${APIkey}`;
+
+    console.log("Encoded location:", encodedLocation);
+    console.log("Requesting ext API with URL:", url);
+
 
     const options = {
         method: 'GET',
-        url: `https://api.tomorrow.io/v4/weather/realtime?location=${encodeURIComponent(city)}&apikey=${APIkey}`,
         headers: {
             accept: 'application/json',
 
         }
     };
 
-    console.log("Requesting external API with URL:", options.url);
+    console.log("Requesting external API with URL:", url);
     try {
-        const response = await axios.request(options);
+        const response = await axios.get(url, options);
         console.log("Data received:", response.data);
         res.json(response.data);
     } catch (error) {

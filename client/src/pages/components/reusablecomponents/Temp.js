@@ -1,9 +1,8 @@
 import React from "react";
-import ImplementWeatherData from "../ImplementWeatherData";
 import './weatherCards.css'
 
-const Temp = ({data,location}) => {
-    const weatherData = ImplementWeatherData('temp', location)
+const Temp = ({weatherData}) => {
+
 
     if (!weatherData || !weatherData.data || !weatherData.data.values) {
         return <div>Loading...</div>;

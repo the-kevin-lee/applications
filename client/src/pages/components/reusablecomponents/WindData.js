@@ -2,8 +2,8 @@ import React from "react";
 import ImplementWeatherData from "../ImplementWeatherData";
 
 
-const WindData = ({data,location}) => {
-    const weatherData = ImplementWeatherData('winddata', location)
+const WindData = ({weatherData}) => {
+   
 
 
     if (!weatherData || !weatherData.data || !weatherData.data.values) {

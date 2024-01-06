@@ -16,3 +16,9 @@
     justify-content: center;
     
 }
+
+.future-forecast {
+    color: white;
+    display: flex;
+    justify-content: center;
+}

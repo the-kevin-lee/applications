@@ -1,9 +1,7 @@
 import React from "react";
-import ImplementWeatherData from "../ImplementWeatherData";
 
 
-const Precip = ({data,location}) => {
-    const weatherData = ImplementWeatherData('precip', location)
+const Precip = ({weatherData}) => {
 
     if (!weatherData || !weatherData.data || !weatherData.data.values) {
         return <div>Loading...</div>;
