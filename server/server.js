@@ -27,7 +27,7 @@ app.get('/api/weather', async (req, res) => {
     const encodedLocation = encodeURIComponent(location);
     const APIkey = "vzkgb5IUigg9TrPsg6Tiu7j98yILxd30";
 
-    const url = `https://api.tomorrow.io/v4/weather/realtime?location=${encodeURIComponent(encodedLocation)}&apikey=${APIkey}`;
+    const url = `https://api.tomorrow.io/v4/weather/realtime?location=${(encodedLocation)}&apikey=${APIkey}`;
 
     console.log("Encoded location:", encodedLocation);
     console.log("Requesting ext API with URL:", url);

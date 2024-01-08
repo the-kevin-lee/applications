@@ -1,7 +1,14 @@
 import React from "react";
 
 
-const Precip = ({weatherData}) => {
+const Precip = ({weatherData, error}) => {
+
+    console.log("Weather data in Precip component:", weatherData);
+
+    if (error) {
+        return <div>Error: {error}</div>
+    }
+
 
     if (!weatherData || !weatherData.data || !weatherData.data.values) {
         return <div>Loading...</div>;

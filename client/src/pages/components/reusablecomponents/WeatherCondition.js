@@ -2,8 +2,11 @@ import React from "react";
 
 
 
-const WeatherCondition = ({weatherData}) => {
+const WeatherCondition = ({weatherData, error}) => {
     
+    if (error) {
+        return <div>Error: {error}</div>
+    }
 
     if (!weatherData || !weatherData.data || !weatherData.data.values) {
         return <div>Loading...</div>;

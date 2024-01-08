@@ -5,9 +5,13 @@ import Navbar from "./components/Navbar";
 import WeatherAlert from "./components/reusablecomponents/WeatherAlert";
 import ImplementWeatherData from "./components/ImplementWeatherData";
 
+
+
 const Home = () => {
-  
-  const [chosenLocation, setChosenLocation] = useState(null);
+
+//  const [showWeatherData,setShowWeatherData] = useState(true);
+  const [chosenLocation, setChosenLocation] = useState("new york");
+  // const [weatherData, setWeatherData] = useState(ImplementWeatherData(chosenLocation));
 
   // Check for a saved location in local storage on component mount
   useEffect(() => {
@@ -29,7 +33,13 @@ const Home = () => {
     localStorage.setItem("userLocation", newLocation);
   };
 
-  const weatherData = ImplementWeatherData(chosenLocation)
+//  let weatherData;
+//   if (showWeatherData) {
+//      weatherData = ImplementWeatherData(chosenLocation);
+//      setShowWeatherData(false);
+//   }
+     
+  const weatherData = ImplementWeatherData(chosenLocation);
 
 
   return (

@@ -1,8 +1,12 @@
 import React from "react";
 import './weatherCards.css'
 
-const Temp = ({weatherData}) => {
+const Temp = ({weatherData, error}) => {
 
+
+    if (error) {
+        return <div>Error: {error}</div>
+    }
 
     if (!weatherData || !weatherData.data || !weatherData.data.values) {
         return <div>Loading...</div>;
