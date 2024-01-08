@@ -1,0 +1,39 @@
+.forecast-container {
+    text-align: center;
+}
+
+.future-forecast-title {
+    animation: fadeIn 3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+.main-div {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+
+.next-5-d, .next-12-h {
+    background-color: aqua;
+    margin: 2%;
+    flex: 1;
+    padding: 20px;
+    height: 600px;
+    width: 300px;
+    border-radius: 30px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.next-5-d:hover, .next-12-h:hover {
+    transform: scale(1.1);
+}

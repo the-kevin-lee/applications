@@ -4,6 +4,7 @@ import "./Home.css";
 import Navbar from "./components/Navbar";
 import WeatherAlert from "./components/reusablecomponents/WeatherAlert";
 import ImplementWeatherData from "./components/ImplementWeatherData";
+import Next from "./components/Next";
 
 const Home = () => {
   const [chosenLocation, setChosenLocation] = useState(localStorage.getItem("userLocation") || "new york"); // State to hold the current location
@@ -54,8 +55,12 @@ const Home = () => {
         </section>
         <hr className="divider" />
         <section className="future-forecast">
-          <h1>Future Forecast</h1>
+          
+          <br/>
+          <Next />
+
         </section>
+        
       </div>
     </>
   );

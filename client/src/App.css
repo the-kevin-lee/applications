@@ -5,7 +5,8 @@ body {
   position: relative;
   
   font-family: 'Poppins', sans-serif;
-  background-image: url('../public/earth.jpg');
+  /* background-image: url('../public/earth.jpg'); */
+  background-color: 	#15365b;
 
   background-size: cover;
   background-repeat: no-repeat;

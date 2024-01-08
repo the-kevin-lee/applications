@@ -1,11 +1,12 @@
 nav {
-    background-color: rgba(58,59,60,0.4);
+    background-color: rgba(146, 186, 230, 1);
     position: relative;
     display: flex;
     align-items: center;
     flex-direction: column;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
 }
-
 nav ul {
     display: flex;
     flex-direction: row;
