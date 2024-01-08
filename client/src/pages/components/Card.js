@@ -6,32 +6,34 @@ import Humidity from './reusablecomponents/Humidity';
 import CloudData from './reusablecomponents/CloudData';
 import WeatherCondition from './reusablecomponents/WeatherCondition';
 
-const Card = ({weatherData, chosenLocation, type}) => {
-    
+const Card = ({ weatherData, type }) => {
 
+
+    
     const changeContent = () => {
         switch (type) {
             case 'temp':
-                return <Temp data={weatherData} location={chosenLocation} />
+                return <Temp weatherData={weatherData} />;
             case 'precipitation':
-                return <Precip data={weatherData} location={chosenLocation}/>
+                return <Precip weatherData={weatherData} />;
             case 'winddata':
-                return <WindData data={weatherData} location={chosenLocation}/>
+                return <WindData weatherData={weatherData} />;
             case 'humidity':
-                return <Humidity data={weatherData} location={chosenLocation}/>
+                return <Humidity weatherData={weatherData} />;
             case 'clouddata':
-                return <CloudData data={weatherData} location={chosenLocation}/>
+                return <CloudData weatherData={weatherData} />;
             case 'weathercondition':
-                return <WeatherCondition data={weatherData} location={chosenLocation}/>
+                return <WeatherCondition weatherData={weatherData} />;
             default:
                 return <div>Unknown</div>;
         }
-    }
-  
+    };
+
     return (
         <div className='card'>
             {changeContent()}
         </div>
-    )}
+    );
+};
 
 export default Card;

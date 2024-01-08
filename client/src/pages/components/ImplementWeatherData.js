@@ -3,14 +3,18 @@ import { useState, useEffect } from "react";
 const baseURL = "http://localhost:5000";
 
 const ImplementWeatherData = (location) => {
-  const [weatherData, setWeatherData] = useState(null);
-  const [error, setError] = useState(null);
-
+  const [weatherData, setWeatherData] = useState(null); // Holds the weather data
+  const [error, setError] = useState(null); // Holds any errors
 
   useEffect(() => {
-    const fetchData = async () => {
-      if (!location) return; // Don't fetch if location is not set
+    // If location isn't provided, set an error and don't attempt to fetch data
+    if (!location) {
+      setError("No location provided.");
+      return;
+    }
 
+    // Defines the function to fetch weather data
+    const fetchData = async () => {
       const URL = `${baseURL}/api/weather?location=${encodeURIComponent(location)}`;
       try {
         const response = await fetch(URL);
@@ -18,60 +22,27 @@ const ImplementWeatherData = (location) => {
           throw new Error(`API call failed with status: ${response.status}`);
         }
         const data = await response.json();
-        setWeatherData(data);
+        setWeatherData(data); // Update the state with the fetched data
         console.log("Fetched weather data:", data);
       } catch (error) {
         console.error("Error fetching weather info:", error);
-        setError(error.message || 'An unknown error occurred');
+        setError(error.message || 'An unknown error occurred'); // Set error state
       }
     };
 
-    fetchData();
-  }, [location]);
+    // throttle call 
+    const timerId = setTimeout(() => {
+        fetchData();
+    }, 1000);
+    // cleanup
+    return ()=> {
+        clearTimeout(timerId);
+    }
 
-  return { weatherData, error };
+    fetchData(); // Fetch the weather data
+  }, [location]); // Only re-fetch the data when the location changes
+
+  return { weatherData, error }; // Return both weather data and error state
 };
 
 export default ImplementWeatherData;
-
-
-
-
-
-// import { useState, useEffect } from "react";
-
-// const baseURL = "http://localhost:5000";
-
-// const ImplementWeatherData = (location) => {
-//   const [weatherData, setWeatherData] = useState(null);
-//   const [error, setError] = useState(null);
-
-//   useEffect(() => {
-//     //fetch info only if location has been set but not the weather data
-
-//     const fetchData = async () => {
-//       const URL = `${baseURL}/api/weather?location=${encodeURIComponent(
-//         location
-//       )}`;
-//       try {
-//         const response = await fetch(URL);
-//         const data = await response.json();
-//         if (data.error) {
-//           throw new Error(data.error);
-//         }
-//         setWeatherData(data);
-//         console.log("Fetched weather data:", data);
-//       } catch (error) {
-//         console.error("Error fetching weather info:", error);
-//         setError(error.message);
-//       }
-//     };
-//     if (location && weatherData === null) {
-//       fetchData();
-//     }
-//   }, [location, weatherData]);
-
-//   return weatherData;
-// };
-
-// export default ImplementWeatherData;
