@@ -37,3 +37,18 @@
 .next-5-d:hover, .next-12-h:hover {
     transform: scale(1.1);
 }
+
+ul {
+    padding: 0;
+    margin: 20px;
+}
+
+
+li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    list-style-type: none; /* Added to remove bullet point symbols */
+}
+
