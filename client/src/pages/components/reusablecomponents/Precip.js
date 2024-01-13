@@ -3,7 +3,7 @@ import React from "react";
 
 const Precip = ({weatherData, error}) => {
 
-    console.log("Weather data in Precip component:", weatherData);
+    // console.log("Weather data in Precip component:", weatherData);
 
     if (error) {
         return <div>Error: {error}</div>

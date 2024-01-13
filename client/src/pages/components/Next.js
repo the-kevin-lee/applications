@@ -1,38 +1,43 @@
-import React from "react";
-import "./Next.css";
+
+import ImplementForecastData from './ImplementForecastData'
+
 
 const Next = () => {
+  const { hourlyForecast, dailyForecast, error } = ImplementForecastData('new york');
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!hourlyForecast || !dailyForecast) {
+    return <div>Loading forecast data...</div>;
+  }
+
+
+    // Check that the expected properties exist before slicing
+    const fiveDayForecast = dailyForecast?.timelines?.daily?.slice(0, 5) || [];
+    const twelveHourForecast = hourlyForecast?.timelines?.hourly?.slice(0, 12) || [];
+  
+
   return (
     <>
       <div className="forecast-container">
         <h1 className="future-forecast-title">Future Forecast</h1>
-
         <div className="main-div">
           <div className="next-5-d">
             <h2>Next 5 Days</h2>
             <ul>
-              <li className="day-one">Mock day one</li>
-              <li className="day-two">Mock day two</li>
-              <li className="day-three">Mock day three</li>
-              <li className="day-four">Mock day four</li>
-              <li className="day-five">Mock day five</li>
+              {fiveDayForecast.map((day, index) => (
+                <li key={index}>Day {index + 1}: {day.values.temperature}</li>
+              ))}
             </ul>
           </div>
           <div className="next-12-h">
             <h2>Next 12 Hours</h2>
             <ul>
-              <li className="hour-one">Mock hour one</li>
-              <li className="hour-two">Mock hour two</li>
-              <li className="hour-three">Mock hour three</li>
-              <li className="hour-four">Mock hour four</li>
-              <li className="hour-five">Mock hour five</li>
-              <li className="hour-six">Mock hour six</li>
-              <li className="hour-seven">Mock hour seven</li>
-              <li className="hour-eight">Mock hour eight</li>
-              <li className="hour-nine">Mock hour nine</li>
-              <li className="hour-ten">Mock hour ten</li>
-              <li className="hour-eleven">Mock hour eleven</li>
-              <li className="hour-twelve">Mock hour twelve</li>
+              {twelveHourForecast.map((hour, index) => (
+                <li key={index}>Hour {index + 1}: {hour.values.temperature}</li>
+              ))}
             </ul>
           </div>
         </div>
@@ -40,5 +45,6 @@ const Next = () => {
     </>
   );
 };
+
 
 export default Next;
