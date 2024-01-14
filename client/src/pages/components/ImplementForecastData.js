@@ -11,7 +11,8 @@ const ImplementForecastData = (location) => {
       try {
         const response = await fetch(`http://localhost:5000/api/forecast?location=${encodeURIComponent(location)}&timesteps=1h`);
         if (!response.ok) {
-          throw new Error(`Hourly API call failed with status: ${response.status}`);
+          throw new Error(`Forecast Data In Development`);
+        //   (`Hourly API call failed with status: ${response.status}`)
         }
         const data = await response.json();
         setForecastData(prevData => ({ ...prevData, hourly: data.hourly }));
