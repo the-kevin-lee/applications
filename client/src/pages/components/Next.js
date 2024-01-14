@@ -1,8 +1,9 @@
-import React from 'react';
-import ImplementForecastData from './ImplementForecastData';
+import React from "react";
+import ImplementForecastData from "./ImplementForecastData";
 
 const Next = () => {
-  const { hourlyForecast, dailyForecast, error } = ImplementForecastData('new york');
+  const { hourlyForecast, dailyForecast, error, loading } =
+    ImplementForecastData("new york");
 
   // Check if there is an error first
   if (error) {
@@ -10,14 +11,17 @@ const Next = () => {
   }
 
   // Check if the data is still being loaded
-  if (!hourlyForecast || !dailyForecast) {
+  if (loading) {
     return <div>Loading forecast data...</div>;
   }
 
   // Extract the first 5 days of daily forecast and the first 12 hours of hourly forecast
-  const fiveDayForecast = Array.isArray(dailyForecast) ? dailyForecast.slice(0, 5) : [];
-  const twelveHourForecast = Array.isArray(hourlyForecast) ? hourlyForecast.slice(0, 12) : [];
-
+  const fiveDayForecast = Array.isArray(dailyForecast)
+    ? dailyForecast.slice(0, 5)
+    : [];
+  const twelveHourForecast = Array.isArray(hourlyForecast)
+    ? hourlyForecast.slice(0, 12)
+    : [];
 
   return (
     <div className="forecast-container">
@@ -28,7 +32,7 @@ const Next = () => {
           <ul>
             {fiveDayForecast.map((forecast, index) => (
               <li key={index}>
-                Day {index + 1}: {forecast.values.temperature}°C
+                Day {index + 1}: {forecast.temperature}°C
               </li>
             ))}
           </ul>
@@ -38,7 +42,7 @@ const Next = () => {
           <ul>
             {twelveHourForecast.map((forecast, index) => (
               <li key={index}>
-                Hour {index + 1}: {forecast.values.temperature}°C
+                Hour {index + 1}: {forecast.temperature}°C
               </li>
             ))}
           </ul>
@@ -49,3 +53,4 @@ const Next = () => {
 };
 
 export default Next;
+
