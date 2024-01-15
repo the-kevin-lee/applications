@@ -23,6 +23,23 @@ const Next = () => {
     ? hourlyForecast.slice(0, 12)
     : [];
 
+  // setting correct hours and days for forecast feature
+  const formatTime = (isoString) => {
+    const date = new Date(isoString);
+    let hours = date.getUTCHours(); // get hours in 24-hour format
+    let minutes = date.getUTCMinutes();
+    let ampm = hours >= 12 ? "PM" : "AM";
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    return `${hours}:${minutes} ${ampm}`;
+  };
+
+  const getDayOfMonth = (isoString) => {
+    const date = new Date(isoString);
+    return date.getUTCDate(); // returns the day of the month (1-31) for the specified date according to universal time.
+  };
+
   return (
     <div className="forecast-container">
       <h1 className="future-forecast-title">Future Forecast</h1>
@@ -32,7 +49,8 @@ const Next = () => {
           <ul>
             {fiveDayForecast.map((forecast, index) => (
               <li key={index}>
-                Day {index + 1}: {forecast.temperature}°C
+                Day {getDayOfMonth(forecast.startTime)}:{" "}
+                {forecast.values.temperature}°C
               </li>
             ))}
           </ul>
@@ -42,7 +60,8 @@ const Next = () => {
           <ul>
             {twelveHourForecast.map((forecast, index) => (
               <li key={index}>
-                Hour {index + 1}: {forecast.temperature}°C
+                Hour {formatTime(forecast.startTime)}:{" "}
+                {forecast.values.temperature}°C
               </li>
             ))}
           </ul>
