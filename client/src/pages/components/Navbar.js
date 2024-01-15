@@ -7,7 +7,7 @@ const Navbar = ({onCitySubmit}) => {
     return (
         <nav>
             <WeatherForm onCitySubmit={onCitySubmit} />
-            <h2 className="app-name" >ADROP</h2>
+            <h2 className="app-name" >PREDICT</h2>
             <br />
             <ul>
                 <li><Link className="link" to="/">Home</Link></li>
