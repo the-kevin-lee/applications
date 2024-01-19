@@ -1,6 +1,3 @@
-.forecast-container {
-    text-align: center;
-}
 
 .future-forecast-title {
     animation: fadeIn 3s ease-in-out;
@@ -15,24 +12,41 @@
     }
 }
 
-
-.main-div {
+section.future-forecast {
     display: flex;
-    justify-content: center;
-    align-items: start;
+    justify-content: center; /* This will center the children horizontally */
+    align-items: flex-start; /* This will align children to the start of the cross axis */
+    flex-wrap: wrap; /* Allows children to wrap if needed, adjust if you want no wrap */
+    padding: 0; /* Adjust padding as necessary */
 }
 
-
-.next-5-d, .next-12-h {
-    background-color: aqua;
-    margin: 2%;
-    flex: 1;
+.forecast-container {
+    box-sizing: border-box;
+    padding: 1em; /* Adjust padding as necessary */
+    width: 100%; /* Take the full width */
+    max-width: 1500px; /* Adjust the max-width to make it wider */
+    margin: auto; /* This will center the container if it's smaller than the parent */
+}
+  /* Apply flexbox layout to .main-div */
+  .main-div {
+    display: flex;
+    justify-content: space-around; /* This will space out the children with space around them */
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    width: 500px;
+  }
+  
+  /* Adjust the flex properties of the children */
+  .next-5-d, .next-12-h {
+    flex: 1; /* This will allow them to grow and take up available space */
+    margin: 1%; /* Adjust the margin as necessary */
     padding: 20px;
-    height: 600px;
-    width: 300px;
+    /* Consider commenting out or adjusting width and height if they're causing layout issues */
+    /* height: 600px; */
+    /* width: 300px; */
     border-radius: 30px;
     transition: transform 0.3s ease-in-out;
-}
+  }
 
 .next-5-d:hover, .next-12-h:hover {
     transform: scale(1.1);

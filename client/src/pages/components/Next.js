@@ -44,6 +44,8 @@ const Next = () => {
     <div className="forecast-container">
       <h1 className="future-forecast-title">Future Forecast</h1>
       <div className="main-div">
+
+
         <div className="next-5-d">
           <h2>Next 5 Days</h2>
           <ul>
@@ -55,6 +57,8 @@ const Next = () => {
             ))}
           </ul>
         </div>
+
+
         <div className="next-12-h">
           <h2>Next 12 Hours</h2>
           <ul>
@@ -66,6 +70,8 @@ const Next = () => {
             ))}
           </ul>
         </div>
+
+        
       </div>
     </div>
   );

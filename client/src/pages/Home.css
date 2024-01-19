@@ -1,3 +1,7 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Antic+Didone&family=Cinzel&display=swap');
+
+
 /* div .main-content-home {
     background: url(/client/build/static/media/earth.jpg);
 } */
@@ -10,7 +14,7 @@
 
 .cityname-display {
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Cinzel', serif;
     display: flex;
     text-align: center;
     justify-content: center;
