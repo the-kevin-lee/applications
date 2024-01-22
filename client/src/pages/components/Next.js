@@ -51,7 +51,7 @@ const Next = () => {
           <ul>
             {fiveDayForecast.map((forecast, index) => (
               <li key={index}>
-                Day {getDayOfMonth(forecast.startTime)}:{" "}
+                 {getDayOfMonth(forecast.startTime)}:{" "}
                 {forecast.values.temperature}°C
               </li>
             ))}
@@ -64,7 +64,7 @@ const Next = () => {
           <ul>
             {twelveHourForecast.map((forecast, index) => (
               <li key={index}>
-                Hour {formatTime(forecast.startTime)}:{" "}
+                 {formatTime(forecast.startTime)}:{" "}
                 {forecast.values.temperature}°C
               </li>
             ))}

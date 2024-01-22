@@ -1,4 +1,3 @@
-
 .future-forecast-title {
     animation: fadeIn 3s ease-in-out;
 }
@@ -55,14 +54,12 @@ section.future-forecast {
 ul {
     padding: 0;
     margin: 20px;
+    list-style-type: none; /* Remove bullet point symbols */
 }
-
 
 li {
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    list-style-type: none; /* Added to remove bullet point symbols */
 }
-

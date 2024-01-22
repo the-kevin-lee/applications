@@ -1,18 +1,30 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Antic+Didone&family=Cinzel&display=swap');
+
+
 .Weather-Form {
     
-        font-family: 'Poppins', sans-serif;
+        font-family: 'Cinzel', serif;
         border: 2px solid #333;
         outline: none;
         display: inline-block;
     }
     
 
+
+
+
 .Weather-Form-Search-Bar {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Cinzel', serif;
     background-color: #333;
     color: #fff;
 }
 
 .Weather-Form-Button {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Cinzel', serif;
+}
+
+
+button {
+    font-family: 'Cinzel', serif;
 }
