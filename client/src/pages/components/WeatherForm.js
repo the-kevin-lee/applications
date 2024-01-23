@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import './WeatherForm.css';
+
 
 const WeatherForm = ({onCitySubmit}) => {
     const [inputCity, setInputCity] = useState("");
@@ -14,13 +16,15 @@ const WeatherForm = ({onCitySubmit}) => {
 
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} >
             <input
                 type='text'
                 value={inputCity}
                 onChange={(e) => setInputCity(e.target.value)}
                 placeholder='Enter City'
+                className='Weather-Form-Searh-Bar'
             />
+
             <button type='submit'>Get Weather Info</button>
         </form>
     )

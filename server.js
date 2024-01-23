@@ -12,6 +12,10 @@ const cors = require('cors');
 
 const app = express();
 app.use(cors());
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("./client/build"));
+}
+
 
 app.get('/api/weather', async (req, res) => {
   const location = req.query.location;
