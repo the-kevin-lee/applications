@@ -3,7 +3,7 @@ import React from "react";
 
 const Precip = ({weatherData, error}) => {
 
-    // console.log("Weather data in Precip component:", weatherData);
+  
 
     if (error) {
         return <div>Error: {error}</div>
@@ -16,7 +16,7 @@ const Precip = ({weatherData, error}) => {
 
     return (
         <div>
-            {weatherData && <h3><b>Chances Of</b></h3>}
+            {weatherData && <h2 className="precip-card-title"><b>Chances Of</b></h2>}
             
             {weatherData && <h3 className="precip-card"> Precipitation: {weatherData.data.values.precipitationProbability}</h3>}
             {weatherData && <h3 className="precip-card"> Freezing Rain: {weatherData.data.values.freezingRainIntensity}</h3>}

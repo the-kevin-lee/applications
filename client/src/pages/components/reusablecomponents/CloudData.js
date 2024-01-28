@@ -15,9 +15,10 @@ const CloudData = ({ weatherData, error }) => {
 
     return (
         <div>
-            {weatherData && <h3 className="cloud-card"> Cloud Cover: {weatherData.data.values.cloudCover}</h3>}
-            {weatherData && <h3 className="cloud-card"> Cloud Base: {weatherData.data.values.cloudBase}</h3>}
-            {weatherData && <h3 className="cloud-card"> Cloud Ceiling: {weatherData.data.values.cloudCeiling}</h3>}
+            {weatherData && <h2 className="cloud-card-title">Clouds</h2>}
+            {weatherData && <h3 className="cloud-card"> Cover: {weatherData.data.values.cloudCover}</h3>}
+            {weatherData && <h3 className="cloud-card"> Base: {weatherData.data.values.cloudBase}</h3>}
+            {weatherData && <h3 className="cloud-card"> Ceiling: {weatherData.data.values.cloudCeiling}</h3>}
             {weatherData && <h3 className="cloud-card"> UV Index: {weatherData.data.values.uvIndex}</h3>}
             {weatherData && <h3 className="cloud-card"> UV Health Concern: {weatherData.data.values.uvHealthConcern}</h3>}
         </div>

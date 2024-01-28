@@ -1,12 +1,24 @@
-/* Using 'em' units for text that should scale with its container */
+
 .temp-card, .precip-card, .wind-card, .weathercondition-card, .cloud-card, .humidity-card {
     color: white;
-    font-size: 1.2em; /* 20% larger than the container's font size */
+    font-size: 1.2em; 
+    text-align: center;
+    font-weight: lighter;
+    
+  }
+
+
+  .precip-card-title, .wind-card-title, .temp-card-title, .humidity-card-title, .cloud-card-title, .weathercondition-card-title{
+    color: white;
+    font-size: 1.3em;
+    text-align: center; 
+    /* font-style:oblique; */
+    font-weight: 600;
   }
   
   @media (max-width: 768px) {
     .temp-card, .precip-card, .wind-card, .weathercondition-card, .cloud-card, .humidity-card {
-      font-size: 1em; /* Adjust size for smaller screens */
+      font-size: 1em; 
     }
   }
   

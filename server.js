@@ -4,7 +4,9 @@
 
 
 
-require('dotenv').config({ path: '../.env' });
+require('dotenv').config({ path: __dirname + '/.env' });
+
+console.log(process.env.API_KEY);
 
 const express = require('express');
 const axios = require('axios');
@@ -84,35 +86,3 @@ app.listen(port, () => {
 });
 
 
-
-// prevs endpoint routing for forecast data:
-
-
-// app.get('/api/forecast', async (req, res) => {
-//     const location = req.query.location;
-//     if (!location || location.trim() === '') {
-//       return res.status(400).json({ error: 'Location parameter is missing.' });
-//     }
-  
-//     const encodedLocation = encodeURIComponent(location);
-//     const APIkey = process.env.API_KEY;
-//     const hourlyUrl = `https://api.tomorrow.io/v4/timelines?location=${encodedLocation}&fields=temperature&timesteps=1h&units=metric&apikey=${APIkey}`;
-//     const dailyUrl = `https://api.tomorrow.io/v4/timelines?location=${encodedLocation}&fields=temperature&timesteps=1d&units=metric&apikey=${APIkey}`;
-  
-//     try {
-//       const [hourlyResponse, dailyResponse] = await Promise.all([
-//         axios.get(hourlyUrl, { headers: { 'Accept': 'application/json' } }),
-//         axios.get(dailyUrl, { headers: { 'Accept': 'application/json' } })
-//       ]);
-  
-//       const forecastData = {
-//         hourly: hourlyResponse.data.data.timelines[0].intervals,
-//         daily: dailyResponse.data.data.timelines[0].intervals
-//       };
-  
-//       res.json(forecastData);
-//     } catch (error) {
-//       console.error("Error fetching forecast data:", error);
-//       res.status(error.response ? error.response.status : 500).json({ error: error.message });
-//     }
-//   });

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ImplementForecastData from "./ImplementForecastData";
 
 const Next = () => {
@@ -40,9 +40,16 @@ const Next = () => {
     return date.getUTCDate(); // returns the day of the month (1-31) for the specified date according to universal time.
   };
 
+  // [unitDataF, setUnitDataF] = useState(false);
+  // if (unitDataF === false) {
+
+  // }
+
+
   return (
     <div className="forecast-container">
       <h1 className="future-forecast-title">Future Forecast</h1>
+      {/* <button>{convertedUnit}</button> */}
       <div className="main-div">
 
 
@@ -52,7 +59,7 @@ const Next = () => {
             {fiveDayForecast.map((forecast, index) => (
               <li key={index}>
                  {getDayOfMonth(forecast.startTime)}:{" "}
-                {forecast.values.temperature}°C
+                {forecast.values.temperature}° C
               </li>
             ))}
           </ul>
@@ -65,7 +72,7 @@ const Next = () => {
             {twelveHourForecast.map((forecast, index) => (
               <li key={index}>
                  {formatTime(forecast.startTime)}:{" "}
-                {forecast.values.temperature}°C
+                {forecast.values.temperature}° C
               </li>
             ))}
           </ul>

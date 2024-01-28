@@ -15,7 +15,8 @@ const WeatherCondition = ({weatherData, error}) => {
 
     return (
         <div>
-            {weatherData && <h3 className="weathercondition-card"> Condition: {weatherData.data.values.weatherCode}</h3>}
+            {weatherData && <h2 className="weathercondition-card-title">Condition</h2>}
+            {weatherData && <h3 className="weathercondition-card"> {weatherData.data.values.weatherCode}</h3>}
             
         </div>
     )

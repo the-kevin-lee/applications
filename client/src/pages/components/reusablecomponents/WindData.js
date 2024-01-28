@@ -1,5 +1,5 @@
 import React from "react";
-import ImplementWeatherData from "../ImplementWeatherData";
+
 
 
 const WindData = ({weatherData, error}) => {
@@ -14,7 +14,8 @@ const WindData = ({weatherData, error}) => {
 
     return (
         <div>
-            {weatherData && <h3 className="wind-card"> Wind Speed : {weatherData.data.values.windSpeed}</h3>}
+            {weatherData && <h2 className="wind-card-title">Wind Data</h2>}
+            {weatherData && <h3 className="wind-card"> Speed : {weatherData.data.values.windSpeed}</h3>}
             {weatherData && <h3 className="wind-card"> Direction: {weatherData.data.values.windDirection}</h3>}
             {weatherData && <h3 className="wind-card"> Gust : {weatherData.data.values.windGust}</h3>}
         </div>

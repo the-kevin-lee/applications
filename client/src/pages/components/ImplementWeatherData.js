@@ -3,17 +3,17 @@ import { useState, useEffect } from "react";
 const baseURL = "http://localhost:5000";
 
 const ImplementWeatherData = (location) => {
-  const [weatherData, setWeatherData] = useState(null); // Holds the weather data
-  const [error, setError] = useState(null); // Holds any errors
+  const [weatherData, setWeatherData] = useState(null); // Holds weather data
+  const [error, setError] = useState(null); // Holds  errors
 
   useEffect(() => {
-    // If location isn't provided, set an error and don't attempt to fetch data
+    // If location isn't provided, set an error and fetch data
     if (!location) {
       setError("No location provided.");
       return;
     }
 
-    // Defines the function to fetch weather data
+    // function to fetch weather data
     const fetchData = async () => {
       const URL = `${baseURL}/api/weather?location=${encodeURIComponent(location)}`;
       try {
@@ -30,17 +30,17 @@ const ImplementWeatherData = (location) => {
       }
     };
 
-    // throttle call 
+   
     const timerId = setTimeout(() => {
         fetchData();
     }, 1000);
-    // cleanup
+   
     return ()=> {
         clearTimeout(timerId);
     }
 
-    fetchData(); // Fetch the weather data
-  }, [location]); // Only re-fetch the data when the location changes
+    fetchData(); 
+  }, [location]); // Only refetch data when the location changes
 
   return { weatherData, error }; // Return both weather data and error state
 };
