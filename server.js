@@ -8,6 +8,7 @@ require('dotenv').config({ path: __dirname + '/.env' });
 
 console.log(process.env.API_KEY);
 
+const path = require('path');
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
@@ -78,6 +79,12 @@ app.get('/api/forecast', async (req, res) => {
       res.status(error.response ? error.response.status : 500).json({ error: error.message });
     }
   });
+
+  
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
+
   
 
 const port = process.env.PORT || 5000;

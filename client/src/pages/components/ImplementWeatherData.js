@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const baseURL = "http://localhost:5000";
+// const baseURL = "http://localhost:5000";
 
 const ImplementWeatherData = (location) => {
   const [weatherData, setWeatherData] = useState(null); // Holds weather data
@@ -15,7 +15,7 @@ const ImplementWeatherData = (location) => {
 
     // function to fetch weather data
     const fetchData = async () => {
-      const URL = `${baseURL}/api/weather?location=${encodeURIComponent(location)}`;
+      const URL = `/api/weather?location=${encodeURIComponent(location)}`;
       try {
         const response = await fetch(URL);
         if (!response.ok) {
@@ -39,7 +39,7 @@ const ImplementWeatherData = (location) => {
         clearTimeout(timerId);
     }
 
-    fetchData(); 
+    // fetchData(); 
   }, [location]); // Only refetch data when the location changes
 
   return { weatherData, error }; // Return both weather data and error state

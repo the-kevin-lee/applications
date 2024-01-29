@@ -11,7 +11,8 @@ const ImplementForecastData = (location) => {
     const fetchForecast = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://localhost:5000/api/forecast?location=${encodeURIComponent(location)}`);
+        const response = await fetch(`/api/forecast?location=${encodeURIComponent(location)}`);
+        // http://localhost:5000/api/forecast?location=${encodeURIComponent(location)}
         if (!response.ok) {
           throw new Error('API call failed with status: ' + response.status);
         }

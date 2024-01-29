@@ -1,10 +1,10 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import Home from './pages/Home';
 import {
   BrowserRouter as Router,
   Route,
-  Link,
+  // Link,
   Routes
 } from 'react-router-dom';
 
