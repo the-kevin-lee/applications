@@ -15,10 +15,14 @@ Predict currently utilizes the React library to contribute to and maintain the o
 
 ## PREVIEW
 To access the site, please first click here: [PREDICT](https://predict-weather-forecast-app.onrender.com/) and wait for about 15-20(1) seconds as Render loads the production-level server.
-To view code, please click on the "newprojectsbranch." The branches will be consolidated in the near future for easier access.
+To view code, please click on the "***newprojectsbranch***." The branches will be consolidated in the near future for easier access.
+
+**PLEASE IGNORE** the "*projects*" branch as it does not accurately provide the most recent code. This branch will be deleted at a later time. 
 
 (1) Loading times may vary depending on server or personal connection.
 
+
 ## HOW TO USE
 As of the application's current stage of development, a user is able to click upon the search bar located at the top and enter in any city across the globe to view weather data separated into different categories: *temperature, *chances of, *wind, *humidity, *clouds, *and overall conditions. 
+
 
